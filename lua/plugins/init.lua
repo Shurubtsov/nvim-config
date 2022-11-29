@@ -67,9 +67,29 @@ return require('packer').startup(function(use)
 		require('plugins.treesitter')
 	end
   }
-  
+
+  -- Plugin for Autocompletion
+  use {
+	  'hrsh7th/nvim-cmp',
+	  config = function()
+		  require('plugins.cmp')
+	  end
+  }
+
   -- Dependencies for nvim-cmp
-  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'rafamadriz/friendly-snippets' -- Snippets for LuaSnip
+  use {
+	  "L3MON4D3/LuaSnip", 
+	  after = 'friendly-snippets',
+	  after = 'nvim-cmp',
+	  config = function()
+		  require('luasnip/loaders/from_vscode').load({
+          paths = { '~/.local/share/nvim/site/pack/packer/start/friendly-snippets' }
+        })
+	  end
+  } -- Plugin for use snippets
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then

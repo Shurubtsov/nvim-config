@@ -7,3 +7,7 @@ vim.opt.smartcase = true -- makes our search ignore uppercase letters unless the
 vim.opt.tabstop = 4 -- amount of spaces in one TAB character
 vim.opt.shiftwidth = 4 -- amount of spaces for characters with commands "<<" and ">>"
 vim.opt.termguicolors = true -- "best" version of the colorscheme
+
+-- disable netrw for nvim-tree 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
