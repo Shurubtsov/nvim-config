@@ -41,7 +41,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         highlight_git = false,
         full_name = false,
         highlight_opened_files = "none",
-        root_folder_label = ":~:s?$?/..?",
         indent_width = 2,
         icons = {
           webdev_colors = true,
@@ -95,21 +94,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
       system_open = {
         cmd = "",
         args = {},
-      },
-      diagnostics = {
-        enable = false,
-        show_on_dirs = false,
-        debounce_delay = 50,
-        severity = {
-          min = vim.diagnostic.severity.HINT,
-          max = vim.diagnostic.severity.ERROR
-        },
-        icons = {
-          hint = "",
-          info = "",
-          warning = "",
-          error = "",
-        },
       },
       filters = {
         dotfiles = false,
@@ -171,11 +155,11 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         prefix = "[FILTER]: ",
         always_show_folders = true,
       },
-      tab = {
-        sync = {
-          open = false,
-          close = false,
-          ignore = {},
-        },
-      },
  } -- END_DEFAULT_OPTS
+
+ -- Keymaps
+local map = vim.api.nvim_set_keymap
+local opts = {noremap = true}
+
+map('n', '<leader>o', '<cmd>NvimTreeToggle<cr>', opts)
+map('n', '<leader>`', '<cmd>NvimTreeFindFile<cr>', opts)

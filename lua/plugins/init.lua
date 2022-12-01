@@ -43,12 +43,16 @@ return require('packer').startup(function(use)
 	end
   }
 
+  use {
+	  'nvim-tree/nvim-web-devicons',
+	  config = function()
+		  require("plugins.web-icons")
+	  end
+  }
+
   -- File explorer
   use {
   	'nvim-tree/nvim-tree.lua',
-  	requires = {
-    	'nvim-tree/nvim-web-devicons', -- optional, for file icons
-  	},
   	tag = 'nightly', -- optional, updated every week. (see issue #1193)
   	config = function()
 		require('plugins.nvim-tree')  
@@ -76,6 +80,13 @@ return require('packer').startup(function(use)
 	  end
   }
 
+  -- Bufferline with upbars
+  use {'akinsho/bufferline.nvim', tag = "v3.*", 
+  		config = function ()
+  			require("plugins.bufferline")
+  		end
+  }
+
   -- Dependencies for nvim-cmp
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
@@ -90,6 +101,60 @@ return require('packer').startup(function(use)
         })
 	  end
   } -- Plugin for use snippets
+
+  -- Fuzzy finder
+  use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  requires = { {'nvim-lua/plenary.nvim'} },
+	  config = function ()
+		  require("plugins.telescope")
+	  end
+  }
+
+  -- Fast motion
+  use {
+	  'phaazon/hop.nvim',
+  	  branch = 'v2', -- optional but strongly recommended
+	  config = function ()
+	  	require("plugins.hop")
+	  end
+  }
+
+  -- Utility
+  use {
+	  'beauwilliams/focus.nvim', -- split windows
+	  config = function ()
+	  	require("plugins.focus")
+	  end
+  }
+  use {
+	  'yamatsum/nvim-cursorline', -- cursorline highlight
+	  config = function()
+		  require("plugins.cursor")
+	  end
+  }
+
+  use {
+	  'glepnir/dashboard-nvim', -- dashboard start menu
+	  config = function ()
+	  	require("plugins.dashboard")
+	  end
+  }
+
+  use {
+    --[[ 
+		`gcc` - Toggles the current line using linewise comment
+		`gbc` - Toggles the current line using blockwise comment
+		`[count]gcc` - Toggles the number of line given as a prefix-count using linewise
+		`[count]gbc` - Toggles the number of line given as a prefix-count using blockwise
+		`gc[count]{motion}` - (Op-pending) Toggles the region using linewise comment
+		`gb[count]{motion}` - (Op-pending) Toggles the region using blockwise comment ]]
+    
+	  'numToStr/Comment.nvim', -- comments
+      config = function()
+         require('Comment').setup()
+      end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
