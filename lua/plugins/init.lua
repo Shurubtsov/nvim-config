@@ -16,7 +16,13 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- My plugins here
-  
+ 
+  -- golang plugin
+
+  use {
+	  'fatih/vim-go'
+  }
+
   -- Colorsheme
   use { 
 	"catppuccin/nvim", 
@@ -120,6 +126,7 @@ return require('packer').startup(function(use)
 	  end
   }
 
+
   -- Utility
   use {
 	  'beauwilliams/focus.nvim', -- split windows
@@ -135,7 +142,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-	  'glepnir/dashboard-nvim', -- dashboard start menu
+	  'glepnir/dashboard-nvim', -- ashboard start menu
 	  config = function ()
 	  	require("plugins.dashboard")
 	  end
