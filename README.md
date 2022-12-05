@@ -1,6 +1,6 @@
 # Nvim-config
 
-My zero configurated nvim IDE layer
+My zero configurated neovim IDE layer
 
 ## Description
 
