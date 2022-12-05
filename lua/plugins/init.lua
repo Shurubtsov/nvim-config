@@ -43,6 +43,8 @@ return require('packer').startup(function(use)
 
   -- Configurations for Nvim LSP
   use {
+	'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
 	'neovim/nvim-lspconfig',
 	config = function()
 		require('plugins.lspconfig')
