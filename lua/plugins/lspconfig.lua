@@ -1,4 +1,4 @@
--- LSP configuration for gopls
+-- LSP configuration for autocompletion
 lspconfig = require "lspconfig"
 util = require "lspconfig/util"
 
@@ -21,7 +21,7 @@ require("mason").setup({
 })
 -- Pre-requesition for LSP server for couple languages
 require("mason-lspconfig").setup({
-	ensure_installed = { "gops", "sumneko_lua", "dockerls", "clangd" }
+	ensure_installed = { "gopls", "sumneko_lua", "dockerls", "clangd", "marksman" }
 })
 
 -- LSP for Golang
@@ -42,6 +42,7 @@ lspconfig.gopls.setup(config({
 	},
 }))
 
+-- LSP for Lua
 lspconfig.sumneko_lua.setup(config({
 	on_attach = on_attach,
 	cmd = { "lua-language-server" },
@@ -90,6 +91,14 @@ lspconfig.clangd.setup({
 		'configure.ac',
 		'.git'
 	)
+})
+
+-- LSP for Markdown
+lspconfig.marksman.setup({
+	on_attach = on_attach,
+	cmd = { "marksman", "server" },
+	filetypes = { "markdown" },
+	root_dir = util.root_pattern(".git", ".marksman.toml")
 })
 
 -- To get your imports ordered on save
