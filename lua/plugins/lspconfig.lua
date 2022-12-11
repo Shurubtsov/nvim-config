@@ -19,8 +19,12 @@ require("mason").setup({
 		}
 	}
 })
-require("mason-lspconfig").setup()
+-- Pre-requesition for LSP server for couple languages
+require("mason-lspconfig").setup({
+	ensure_installed = { "gops", "sumneko_lua", "dockerls", "clangd" }
+})
 
+-- LSP for Golang
 lspconfig.gopls.setup(config({
 	on_attach = on_attach,
 	cmd = { "gopls", "serve" },
@@ -64,11 +68,28 @@ lspconfig.sumneko_lua.setup(config({
 	},
 }))
 
+-- LSP for Dockerfile
 lspconfig.dockerls.setup({
 	on_attach = on_attach,
 	cmd = { "docker-langserver", "--stdio" },
 	filetypes = { "dockerfile" },
 	root_dir = util.root_pattern("Dockerfile")
+})
+
+-- LSP for C, C++ etc.
+lspconfig.clangd.setup({
+	on_attach = on_attach,
+	cmd = { "clangd" },
+	filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+	root_dir = util.root_pattern(
+		'.clangd',
+		'.clang-tidy',
+		'.clang-format',
+		'compile_commands.json',
+		'compile_flags.txt',
+		'configure.ac',
+		'.git'
+	)
 })
 
 -- To get your imports ordered on save
