@@ -5,6 +5,11 @@ local lspconfig = require('lspconfig')
 
 local on_attach = require('plugins.lsp')
 
+-- Autopairs
+require("nvim-autopairs").setup {}
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { 'gopls', }
 for _, lsp in ipairs(servers) do
@@ -16,6 +21,11 @@ end
 
 -- nvim-cmp setup
 local cmp = require('cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 cmp.setup {
   snippet = {
     expand = function(args)
