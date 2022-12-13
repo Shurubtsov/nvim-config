@@ -35,21 +35,6 @@ git clone https://github.com/fatih/vim-go.git ~/.local/share/nvim/site/pack/plug
 
 ```
 
-### Packer.nvim
-
-This config uses packer manager for plugins called `packer.nvim`
-
-For install use this command:
-
-```bash
-# Unix
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# Windows powershell
-git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
-```
-
 ### Ripgrep
 
 Config use `telescope` plugin and he need suggested dependencies like a `ripgrep` for fastest find.

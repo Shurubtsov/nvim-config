@@ -1,3 +1,17 @@
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗"
+		}
+	}
+})
+-- Pre-requesition for LSP server for couple languages
+require("mason-lspconfig").setup({
+	ensure_installed = { "gopls", "sumneko_lua", "dockerls", "clangd", "marksman" }
+})
+
 -- LSP configuration for autocompletion
 lspconfig = require "lspconfig"
 util = require "lspconfig/util"

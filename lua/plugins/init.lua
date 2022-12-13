@@ -83,6 +83,7 @@ return require('packer').startup(function(use)
 	-- Plugin for Autocompletion
 	use {
 		'hrsh7th/nvim-cmp',
+		'windwp/nvim-autopairs',
 		config = function()
 			require('plugins.cmp')
 		end
