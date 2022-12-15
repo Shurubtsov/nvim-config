@@ -23,6 +23,25 @@ return require('packer').startup(function(use)
 		'fatih/vim-go'
 	}
 
+	use {
+  "olexsmir/gopher.nvim",
+  requires = { -- dependencies
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+  },
+  config = function ()
+	  require("gopher").setup {
+  commands = {
+    go = "go",
+    gomodifytags = "gomodifytags",
+    gotests = "~/go/bin/gotests", -- also you can set custom command path
+    impl = "impl",
+    iferr = "iferr",
+  },
+}
+  end
+}
+
 	-- Colorsheme
 	use {
 		"catppuccin/nvim",
@@ -41,10 +60,23 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	use { 
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup({
+   	 ui = {
+        icons = {
+            	package_installed = "✓",
+            	package_pending = "➜",
+           	 package_uninstalled = "✗"
+        	}
+    	}
+	})
+			end
+}
+
 	-- Configurations for Nvim LSP
 	use {
-		'williamboman/mason.nvim',
-		'williamboman/mason-lspconfig.nvim',
 		'neovim/nvim-lspconfig',
 		config = function()
 			require('plugins.lspconfig')
