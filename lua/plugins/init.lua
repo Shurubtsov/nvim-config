@@ -24,23 +24,25 @@ return require('packer').startup(function(use)
 	}
 
 	use {
-  "olexsmir/gopher.nvim",
-  requires = { -- dependencies
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-  },
-  config = function ()
-	  require("gopher").setup {
-  commands = {
-    go = "go",
-    gomodifytags = "gomodifytags",
-    gotests = "~/go/bin/gotests", -- also you can set custom command path
-    impl = "impl",
-    iferr = "iferr",
-  },
-}
-  end
-}
+		"olexsmir/gopher.nvim",
+		requires = { -- dependencies
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			local path = os.getenv("HOME") .. "/go/bin/gotests"
+			print("debug: " .. path)
+			require("gopher").setup {
+				commands = {
+					go = "go",
+					gomodifytags = "gomodifytags",
+					gotests = path, -- also you can set custom command path
+					impl = "impl",
+					iferr = "iferr",
+				},
+			}
+		end
+	}
 
 	-- Colorsheme
 	use {
@@ -60,20 +62,20 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	use { 
+	use {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup({
-   	 ui = {
-        icons = {
-            	package_installed = "✓",
-            	package_pending = "➜",
-           	 package_uninstalled = "✗"
-        	}
-    	}
-	})
-			end
-}
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗"
+					}
+				}
+			})
+		end
+	}
 
 	-- Configurations for Nvim LSP
 	use {
@@ -115,7 +117,6 @@ return require('packer').startup(function(use)
 	-- Plugin for Autocompletion
 	use {
 		'hrsh7th/nvim-cmp',
-		'windwp/nvim-autopairs',
 		config = function()
 			require('plugins.cmp')
 		end
@@ -172,6 +173,22 @@ return require('packer').startup(function(use)
 		'yamatsum/nvim-cursorline', -- cursorline highlight
 		config = function()
 			require("plugins.cursor")
+		end
+	}
+
+	use {
+		"windwp/nvim-autopairs",
+		requires = { "hrsh7th/nvim-cmp" },
+		config = function()
+			require("nvim-autopairs").setup({
+				fast_wrap = {},
+			})
+			local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+			local cmp = require('cmp')
+			cmp.event:on(
+				'confirm_done',
+				cmp_autopairs.on_confirm_done()
+			)
 		end
 	}
 
