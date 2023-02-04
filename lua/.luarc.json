@@ -3,7 +3,9 @@
     "Lua.diagnostics.globals": [
         "vim",
         "lspconfig",
-        "util"
+        "util",
+        "go_org_imports",
+        "diagnostics_indicator"
     ],
     "Lua.workspace.checkThirdParty": false
 }
