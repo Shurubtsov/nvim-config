@@ -17,11 +17,6 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	-- My plugins here
 
-	-- Vim-be-good trainer
-	use({
-		"ThePrimeagen/vim-be-good",
-	})
-
 	-- golang plugin
 	use({
 		"fatih/vim-go",
@@ -67,7 +62,6 @@ return require("packer").startup(function(use)
 	})
 
 	-- Configurations for Nvim LSP
-
 	use({
 		"neovim/nvim-lspconfig",
 		requires = {
@@ -84,25 +78,6 @@ return require("packer").startup(function(use)
 		config = function()
 			require("plugins.web-icons")
 		end,
-	})
-
-	-- Formatters
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			local on_attach = require("plugins.lsp")
-
-			local null_ls = require("null-ls")
-
-			null_ls.setup({
-				sources = {
-					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.diagnostics.markdownlint,
-				},
-				on_attach = on_attach,
-			})
-		end,
-		requires = { "nvim-lua/plenary.nvim" },
 	})
 
 	-- File explorer
