@@ -44,6 +44,32 @@ lspconfig.gopls.setup(config({
 	},
 }))
 
+-- LSP for Rust
+lspconfig.rust_analyzer.setup(config({
+	on_attach = on_attach,
+	cmd = { "rust_analyzer" },
+	filetypes = { "rust" },
+	root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = {
+					group = "module",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true
+			},
+		}
+	}
+}))
+
 -- LSP for Lua
 lspconfig.sumneko_lua.setup(config({
 	on_attach = on_attach,

@@ -196,10 +196,12 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"glepnir/dashboard-nvim", -- ashboard start menu
+		"glepnir/dashboard-nvim", -- dashboard start menu
+		event = 'VimEnter',
 		config = function()
 			require("plugins.dashboard")
 		end,
+		requires = { 'nvim-tree/nvim-web-devicons' }
 	})
 
 	use({
