@@ -9,7 +9,7 @@ local on_attach = require('plugins.lsp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', }
+local servers = { 'gopls', 'rust_analyzer', 'somneko_lua' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
