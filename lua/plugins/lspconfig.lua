@@ -47,8 +47,8 @@ lspconfig.gopls.setup(config({
 -- LSP for Rust
 lspconfig.rust_analyzer.setup(config({
 	on_attach = on_attach,
-	cmd = { "rust_analyzer" },
-	filetypes = { "rust" },
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust", "rs" },
 	root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
 	settings = {
 		["rust-analyzer"] = {
