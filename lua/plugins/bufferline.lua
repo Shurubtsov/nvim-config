@@ -31,6 +31,7 @@ local opts = { noremap = true }
 map("n", "]b", "<cmd>BufferLineCycleNext<CR>", opts)
 map("n", "[b", "<cmd>BufferLineCyclePrev<CR>", opts)
 map("n", "tb", "<cmd>BufferLinePickClose<CR>", opts)
+map("n", "tv", "<cmd>BufferLinePick<CR>", opts)
 map("n", "<C-b>", "<cmd>bdelete!<CR>", opts)
 
 diagnostics_indicator = function(count, level)

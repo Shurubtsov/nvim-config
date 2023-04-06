@@ -71,10 +71,12 @@ lspconfig.rust_analyzer.setup(config({
 }))
 
 -- LSP for Lua
-lspconfig.sumneko_lua.setup(config({
+lspconfig.lua_ls.setup(config({
 	on_attach = on_attach,
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
+	root_dir = util.root_pattern(".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git"),
+	log_level = 2,
 	settings = {
 		Lua = {
 			runtime = {
