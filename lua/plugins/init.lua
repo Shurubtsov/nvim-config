@@ -55,7 +55,7 @@ return require("packer").startup(function(use)
 	-- Statusline
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = { "kyazdani42/nvim-web-devicons", "SmiteshP/nvim-navic", opt = true },
 		config = function()
 			require("plugins.lualine")
 		end,
@@ -96,7 +96,6 @@ return require("packer").startup(function(use)
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
-
 		config = function()
 			require("plugins.treesitter")
 		end,
@@ -128,8 +127,8 @@ return require("packer").startup(function(use)
 	})
 
 	-- Dependencies for nvim-cmp
-	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-	use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
+	use("hrsh7th/cmp-nvim-lsp")      -- LSP source for nvim-cmp
+	use("saadparwaiz1/cmp_luasnip")  -- Snippets source for nvim-cmp
 	use("rafamadriz/friendly-snippets") -- Snippets for LuaSnip
 	use({
 		"L3MON4D3/LuaSnip",
@@ -174,6 +173,14 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use {
+		"SmiteshP/nvim-navic", -- tab highlight
+		requires = "neovim/nvim-lspconfig",
+		config = function()
+			require("plugins.navic")
+		end,
+	}
+
 	-- gitsigns
 	use({
 		"lewis6991/gitsigns.nvim",
@@ -182,6 +189,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- add autopairs for better write expirience
 	use({
 		"windwp/nvim-autopairs",
 		requires = { "hrsh7th/nvim-cmp" },
@@ -205,7 +213,7 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		--[[ 
+		--[[
 		`gcc` - Toggles the current line using linewise comment
 		`gbc` - Toggles the current line using blockwise comment
 		`[count]gcc` - Toggles the number of line given as a prefix-count using linewise
