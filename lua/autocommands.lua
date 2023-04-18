@@ -1,6 +1,9 @@
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
 
+-- The added characters in the command represent the actions which the cursor can now perform if it reaches a line boundary
+vim.cmd "set whichwrap+=<,>,[,],h,l"
+
 local autocmd = vim.api.nvim_create_autocmd
 -- local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
@@ -18,27 +21,27 @@ local opt_local = vim.opt_local
 ---ENDWORKAROUND
 
 -- go: omnifunc
-autocmd({'FileType'}, {
-  pattern = 'go',
-  callback = function()
-    opt_local.omnifunc = 'v:lua.vim.lsp.omnifunc'
-  end
+autocmd({ 'FileType' }, {
+	pattern = 'go',
+	callback = function()
+		opt_local.omnifunc = 'v:lua.vim.lsp.omnifunc'
+	end
 })
 
 -- don't auto commenting new lines
-autocmd({'BufEnter'}, {
-  pattern = '*',
-  callback = function()
-    opt.fo:remove('c')
-    opt.fo:remove('r')
-    opt.fo:remove('o')
-  end
+autocmd({ 'BufEnter' }, {
+	pattern = '*',
+	callback = function()
+		opt.fo:remove('c')
+		opt.fo:remove('r')
+		opt.fo:remove('o')
+	end
 })
 
 -- go: format on save
 autocmd('BufWritePre', {
-  pattern = { '*.go' },
-  callback = function()
-    vim.lsp.buf.format({ async=true })
-  end
+	pattern = { '*.go' },
+	callback = function()
+		vim.lsp.buf.format({ async = true })
+	end
 })
