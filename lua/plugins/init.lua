@@ -17,7 +17,7 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     -- My plugins here
 
-    -- golang plugin
+    -- golang plugin"
     use({
         "fatih/vim-go",
     })
@@ -179,13 +179,15 @@ return require("packer").startup(function(use)
         end,
     }
 
-    -- gitsigns
-    use({
-        "lewis6991/gitsigns.nvim",
+    -- add auto surround for words
+    use {
+        'echasnovski/mini.surround',
+        branch = 'stable',
         config = function()
-            require("gitsigns").setup()
-        end,
-    })
+            require('mini.surround').setup()
+        end
+    }
+
 
     -- add autopairs for better write expirience
     use({
