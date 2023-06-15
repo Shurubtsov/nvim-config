@@ -11,7 +11,7 @@ Config for `Neovim` with couple setups for some plugins.
 ### Nerd fonts
 
 For stable functionality of config need setup `Nerd fonts`
-  - Recommended: `Hack Nerd`
+  - Recommended: `Agave`
 
 Visit [This site](https://www.nerdfonts.com/) for download fonts.
 
@@ -19,9 +19,11 @@ Setup:
 
 1.) Download a `Nerd Font`
 
-2.) Unzip and copy to `~/.fonts`
+2.) Unzip and copy to `~/.local/share/fonts`
 
-3.) Run the command `fc-cache -fv` to manually rebuild the font cache
+3.) Run the command  to manually rebuild the font cache
+
+> fc-cache -fv
 
 
 ### Vim-go
