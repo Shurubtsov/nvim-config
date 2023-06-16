@@ -43,6 +43,13 @@ return require("packer").startup(function(use)
         end,
     })
 
+    -- Terminal Integration
+
+    use { "akinsho/toggleterm.nvim", tag = '*',
+        config = function()
+            require("plugins.toggleterm")
+        end }
+
     -- Colorsheme
     use({
         "catppuccin/nvim",
