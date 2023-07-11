@@ -112,7 +112,7 @@ lspconfig.dockerls.setup({
 lspconfig.clangd.setup({
     on_attach = on_attach,
     cmd = { "clangd" },
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     root_dir = util.root_pattern(
         '.clangd',
         '.clang-tidy',
