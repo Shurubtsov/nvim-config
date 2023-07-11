@@ -17,9 +17,13 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     -- My plugins here
 
-    -- golang plugin"
+    -- golang plugin
     use({
         "fatih/vim-go",
+    })
+    -- ziglang plugin
+    use({
+        "ziglang/zig.vim",
     })
 
     use({
