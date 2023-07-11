@@ -124,6 +124,13 @@ lspconfig.clangd.setup({
     )
 })
 
+lspconfig.bufls.setup({
+    on_attach = on_attach,
+    cmd = { "bufls", "serve" },
+    filetypes = { "proto" },
+    root_dir = util.root_pattern("buf.work.yaml", ".git")
+})
+
 -- LSP for Markdown
 lspconfig.marksman.setup({
     on_attach = on_attach,
@@ -136,7 +143,7 @@ lspconfig.marksman.setup({
 lspconfig.zls.setup({
     on_attach = on_attach,
     cmd = { "zls" },
-    filetypes = {"zig", "zir"},
+    filetypes = { "zig", "zir" },
     root_dir = util.root_pattern("zls.json", ".git")
 })
 
