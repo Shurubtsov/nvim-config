@@ -8,7 +8,7 @@ local on_attach = require('plugins.lsp')
 
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', 'rust_analyzer', 'lua_ls', 'zls', 'clangd' }
+local servers = { 'gopls', 'rust_analyzer', 'lua_ls', 'zls', 'clangd', 'omnisharp' }
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
