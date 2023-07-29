@@ -1,59 +1,65 @@
-require 'nvim-web-devicons'.setup {
-    -- your personnal icons can go here (to override)
-    -- you can specify color or cterm_color instead of specifying both of them
-    -- DevIcon will be appended to `name`
-    override = {
-        zsh = {
-            icon = "",
-            color = "#428850",
-            cterm_color = "65",
-            name = "Zsh"
-        },
+return {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
+    config = function()
+        require 'nvim-web-devicons'.setup {
+            -- your personnal icons can go here (to override)
+            -- you can specify color or cterm_color instead of specifying both of them
+            -- DevIcon will be appended to `name`
+            override = {
+                zsh = {
+                    icon = "",
+                    color = "#428850",
+                    cterm_color = "65",
+                    name = "Zsh"
+                },
 
-        lua = {
-            icon = "",
-            color = "#2300b0",
-            cterm_color = "65",
-            name = "lua"
-        },
+                lua = {
+                    icon = "",
+                    color = "#2300b0",
+                    cterm_color = "65",
+                    name = "lua"
+                },
 
-        go = {
-            icon = "",
-            color = "#51eaff",
-            cterm_color = "65",
-            name = "go"
-        },
+                go = {
+                    icon = "",
+                    color = "#51eaff",
+                    cterm_color = "65",
+                    name = "go"
+                },
 
-        c = {
-            icon = "",
-            color = "#BBC9DD",
-            cterm_color = "65",
-            name = "c"
+                c = {
+                    icon = "",
+                    color = "#BBC9DD",
+                    cterm_color = "65",
+                    name = "c"
+                }
+            },
+
+            override_by_filename = {
+                [".gitignore"] = {
+                    icon = "",
+                    color = "#f1502f",
+                    name = "Gitignore"
+                },
+                ["Dockerfile"] = {
+                    icon = " ",
+                    color = "#2496ed",
+                    name = "Dockerfile"
+                },
+            },
+
+            -- globally enable different highlight colors per icon (default to true)
+            -- if set to false all icons will have the default icon's color
+            color_icons = true,
+            -- globally enable default icons (default to false)
+            -- will get overriden by `get_icons` option
+            default = true,
+            -- globally enable "strict" selection of icons - icon will be looked up in
+            -- different tables, first by filename, and if not found by extension; this
+            -- prevents cases when file doesn't have any extension but still gets some icon
+            -- because its name happened to match some extension (default to false)
+            strict = true,
         }
-    },
-
-    override_by_filename = {
-        [".gitignore"] = {
-            icon = "",
-            color = "#f1502f",
-            name = "Gitignore"
-        },
-        ["Dockerfile"] = {
-            icon = " ",
-            color = "#2496ed",
-            name = "Dockerfile"
-        },
-    },
-
-    -- globally enable different highlight colors per icon (default to true)
-    -- if set to false all icons will have the default icon's color
-    color_icons = true,
-    -- globally enable default icons (default to false)
-    -- will get overriden by `get_icons` option
-    default = true,
-    -- globally enable "strict" selection of icons - icon will be looked up in
-    -- different tables, first by filename, and if not found by extension; this
-    -- prevents cases when file doesn't have any extension but still gets some icon
-    -- because its name happened to match some extension (default to false)
-    strict = true,
+    end
 }

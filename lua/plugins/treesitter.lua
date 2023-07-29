@@ -1,6 +1,15 @@
--- Treesitter is syntax highlighter
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'go', 'lua', 'make', 'yaml', 'sql', 'proto', 'markdown',
-        'gomod', 'gowork', 'rust', 'vim', 'luadoc', 'zig', 'c_sharp' },
-    highlight = { enable = true },
+return {
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+        local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+        ts_update()
+    end,
+    config = function()
+        -- Treesitter is syntax highlighter
+        require 'nvim-treesitter.configs'.setup {
+            ensure_installed = { 'go', 'lua', 'make', 'yaml', 'sql', 'proto', 'markdown',
+                'gomod', 'gowork', 'rust', 'vim', 'luadoc', 'zig' },
+            highlight = { enable = true },
+        }
+    end
 }
