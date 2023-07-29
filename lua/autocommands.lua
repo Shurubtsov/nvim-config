@@ -1,9 +1,4 @@
 -- setup must be called before loading
-
--- colorscheme
--- vim.cmd.colorscheme "catppuccin"
-vim.cmd.colorscheme "kanagawa"
-
 -- The added characters in the command represent the actions which the cursor can now perform if it reaches a line boundary
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 

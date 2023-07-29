@@ -7,8 +7,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 local navic = require("nvim-navic")
--- Import the 'omnisharp_config' function from the separate module
-local omnisharp_cfg = require("plugins.omnisharp_cfg")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -40,8 +38,6 @@ local on_attach = function(client, bufnr)
         navic.attach(client, bufnr)
     end
 
-    -- Call the omnisharp_config function to handle Omnisharp specific configurations
-    omnisharp_cfg(client, bufnr)
 end
 
 return on_attach
