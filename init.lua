@@ -1,4 +1,5 @@
 -- main file for nvim config --
+local lazy_opts = require('package.utils').options
 Lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(Lazypath) then
     vim.fn.system({
@@ -15,20 +16,4 @@ vim.opt.rtp:prepend(Lazypath)
 require('options')
 require('keymaps')
 require('autocommands')
-require("lazy").setup('plugins', {
-    ui = {
-        icons = {
-            cmd = "⌘",
-            config = "🛠",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-        },
-    },
-})
+require("lazy").setup('plugins', lazy_opts)
