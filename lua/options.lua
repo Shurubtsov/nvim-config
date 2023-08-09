@@ -1,4 +1,6 @@
 -- options for editor --
+
+
 local options = {
     number = true,             -- show number column
     mouse = 'a',               -- enable mouse in all mods
@@ -9,7 +11,7 @@ local options = {
     termguicolors = true,      -- "best" version of the colorscheme
     expandtab = true,          -- convert tabs to spaces
     cursorline = true,         -- highlight the current line
-    relativenumber = true,           -- relative numbers line
+    relativenumber = true,     -- relative numbers line
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 }
 
