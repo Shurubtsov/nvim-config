@@ -14,10 +14,17 @@ return {
 
         local on_attach = require('package.lsp')
 
-
-
         -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-        local servers = { 'gopls', 'rust_analyzer', 'lua_ls', 'zls', 'clangd', 'omnisharp' }
+        local servers = {
+            'gopls',
+            'rust_analyzer',
+            'lua_ls',
+            'zls',
+            'clangd',
+            'pyright',
+            'dockerls',
+            'bufls',
+        }
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup {
                 on_attach = on_attach,
