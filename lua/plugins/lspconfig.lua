@@ -32,6 +32,21 @@ return {
 
         local on_attach = require('package.lsp')
 
+        -- LSP for Python
+        lspconfig.pyright.setup(config({
+            on_attach = on_attach,
+            cmd = { "pyright-langserver", "--stdio" },
+            filetypes = { "python" },
+            settings = {
+                python = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        diagnosticMode = "workspace",
+                        useLibraryCodeForTypes = true
+                    }
+                }
+            }
+        }))
 
         -- LSP for Golang
         lspconfig.gopls.setup(config({
@@ -130,8 +145,6 @@ return {
                 '.git'
             )
         })
-
-        
 
         lspconfig.bufls.setup({
             on_attach = on_attach,
