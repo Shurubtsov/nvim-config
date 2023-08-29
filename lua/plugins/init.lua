@@ -10,6 +10,7 @@ return {
     },
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
+    { "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview (bin in dir: ~/.local/bin)
     {
         "olexsmir/gopher.nvim",
         dependencies = {
@@ -27,12 +28,6 @@ return {
                     iferr = "iferr",
                 },
             })
-        end,
-    },
-    {
-        "iamcco/markdown-preview.nvim",
-        build = function()
-            vim.fn["mkdp#util#install"]()
         end,
     },
     {
