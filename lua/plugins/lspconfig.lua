@@ -131,20 +131,20 @@ return {
         })
 
         -- LSP for C, C++ etc.
-        lspconfig.clangd.setup({
-            on_attach = on_attach,
-            cmd = { "clangd" },
-            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-            root_dir = util.root_pattern(
-                '.clangd',
-                '.clang-tidy',
-                '.clang-format',
-                'compile_commands.json',
-                'compile_flags.txt',
-                'configure.ac',
-                '.git'
-            )
-        })
+        -- lspconfig.clangd.setup({
+        --     on_attach = on_attach,
+        --     cmd = { "clangd" },
+        --     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+        --     root_dir = util.root_pattern(
+        --         '.clangd',
+        --         '.clang-tidy',
+        --         '.clang-format',
+        --         'compile_commands.json',
+        --         'compile_flags.txt',
+        --         'configure.ac',
+        --         '.git'
+        --     )
+        -- })
 
         lspconfig.bufls.setup({
             on_attach = on_attach,
