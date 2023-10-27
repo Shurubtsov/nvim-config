@@ -33,7 +33,17 @@ return {
             },
             actions = {
                 open_file = {
-                    resize_window = true,
+                    quit_on_open = true,
+                },
+            },
+            diagnostics = {
+                enable = true,
+                show_on_dirs = true,
+                icons = {
+                    hint = "",
+                    info = "",
+                    warning = "",
+                    error = "",
                 },
             },
             renderer = {
