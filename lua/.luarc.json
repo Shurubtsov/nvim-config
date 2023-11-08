@@ -5,7 +5,8 @@
         "lspconfig",
         "util",
         "go_org_imports",
-        "diagnostics_indicator"
+        "diagnostics_indicator",
+        "Lazypath"
     ],
     "Lua.workspace.checkThirdParty": false
 }
