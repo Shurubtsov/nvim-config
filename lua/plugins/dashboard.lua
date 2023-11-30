@@ -1,5 +1,5 @@
 return {
-    "glepnir/dashboard-nvim",     -- dashboard start menu
+    'nvimdev/dashboard-nvim', -- dashboard start menu
     event = 'VimEnter',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
