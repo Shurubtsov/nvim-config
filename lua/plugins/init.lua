@@ -11,6 +11,7 @@ return {
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
     { "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview (bin in dir: ~/.local/bin)
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "olexsmir/gopher.nvim",
         dependencies = {
