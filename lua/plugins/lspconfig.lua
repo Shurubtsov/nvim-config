@@ -32,22 +32,6 @@ return {
 
         local on_attach = require('package.lsp')
 
-        -- LSP for Python
-        lspconfig.pyright.setup(config({
-            on_attach = on_attach,
-            cmd = { "pyright-langserver", "--stdio" },
-            filetypes = { "python" },
-            settings = {
-                python = {
-                    analysis = {
-                        autoSearchPaths = true,
-                        diagnosticMode = "workspace",
-                        useLibraryCodeForTypes = true
-                    }
-                }
-            }
-        }))
-
         -- LSP for Golang
         lspconfig.gopls.setup(config({
             on_attach = on_attach,
@@ -122,43 +106,20 @@ return {
             },
         }))
 
-        -- LSP for Dockerfile
-        lspconfig.dockerls.setup({
-            on_attach = on_attach,
-            cmd = { "docker-langserver", "--stdio" },
-            filetypes = { "dockerfile" },
-            root_dir = util.root_pattern("Dockerfile")
-        })
-
         -- LSP for C, C++ etc.
-        -- lspconfig.clangd.setup({
-        --     on_attach = on_attach,
-        --     cmd = { "clangd" },
-        --     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-        --     root_dir = util.root_pattern(
-        --         '.clangd',
-        --         '.clang-tidy',
-        --         '.clang-format',
-        --         'compile_commands.json',
-        --         'compile_flags.txt',
-        --         'configure.ac',
-        --         '.git'
-        --     )
-        -- })
-
-        lspconfig.bufls.setup({
+        lspconfig.clangd.setup({
             on_attach = on_attach,
-            cmd = { "bufls", "serve" },
-            filetypes = { "proto" },
-            root_dir = util.root_pattern("buf.work.yaml", ".git")
-        })
-
-        -- LSP for Markdown
-        lspconfig.marksman.setup({
-            on_attach = on_attach,
-            cmd = { "marksman", "server" },
-            filetypes = { "markdown" },
-            root_dir = util.root_pattern(".git", ".marksman.toml")
+            cmd = { "clangd" },
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+            root_dir = util.root_pattern(
+                '.clangd',
+                '.clang-tidy',
+                '.clang-format',
+                'compile_commands.json',
+                'compile_flags.txt',
+                'configure.ac',
+                '.git'
+            )
         })
 
         -- LSP for Zig (ziglang)
