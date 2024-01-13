@@ -20,10 +20,6 @@ return {
             'rust_analyzer',
             'lua_ls',
             'zls',
-            'clangd',
-            'pyright',
-            'dockerls',
-            'bufls',
         }
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup {

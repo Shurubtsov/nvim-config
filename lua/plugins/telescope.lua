@@ -7,22 +7,11 @@ return {
             defaults = {
                 prompt_prefix = '> ',
                 color_devicons = true,
-
                 file_previewer = require('telescope.previewers').vim_buffer_cat.new,
                 grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
                 qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
             },
-            fzf = {
-                fuzzy = true,                   -- false will only do exact matching
-                override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true,    -- override the file sorter
-                case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-            }
         }
-        -- To get fzf loaded and working with telescope, you need to call
-        -- load_extension, somewhere after setup function:
-        require('telescope').load_extension('fzf')
-
         local map = vim.api.nvim_set_keymap
         local opts = { noremap = true, silent = true }
 
