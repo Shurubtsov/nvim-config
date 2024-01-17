@@ -10,7 +10,7 @@ return {
     },
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
-    { "ellisonleao/glow.nvim", config = true, cmd = "Glow" }, -- markdown preview (bin in dir: ~/.local/bin)
+    { "ellisonleao/glow.nvim",                    config = true, cmd = "Glow" }, -- markdown preview (bin in dir: ~/.local/bin)
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "olexsmir/gopher.nvim",
@@ -32,14 +32,14 @@ return {
         end,
     },
     {
+        -- <Tab>: choose next snippets
+        -- <Shift-Tab>: choose prev snippets
         "L3MON4D3/LuaSnip",
         version = "v2.*",
         dependencies = { "friendly-snippets", "nvim-cmp" },
         build = "make install_jsregexp",
         config = function()
-            require("luasnip/loaders/from_vscode").lazy_load({
-                paths = { Lazypath .. "/friendly-snippets" },
-            })
+            require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
     {
