@@ -33,9 +33,11 @@ return {
     },
     {
         "L3MON4D3/LuaSnip",
+        version = "v2.*",
         dependencies = { "friendly-snippets", "nvim-cmp" },
+        build = "make install_jsregexp",
         config = function()
-            require("luasnip/loaders/from_vscode").load({
+            require("luasnip/loaders/from_vscode").lazy_load({
                 paths = { Lazypath .. "/friendly-snippets" },
             })
         end,
