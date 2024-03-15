@@ -50,6 +50,14 @@ return {
             },
         }))
 
+        --LSP for Protobuf
+        lspconfig.bufls.setup(config({
+            on_attach = on_attach,
+            cmd = { "bufls", "serve" },
+            filetypes = { "proto" },
+            root_dir = util.root_pattern("buf.work.yaml", ".git")
+        }))
+
         -- LSP for Rust
         lspconfig.rust_analyzer.setup(config({
             on_attach = on_attach,
@@ -136,6 +144,13 @@ return {
                 'configure.ac',
                 '.git'
             )
+        })
+
+        -- LSP for SQL
+        lspconfig.sqlls.setup({
+            on_attach = on_attach,
+            cmd = { "sql-language-server", "up", "--method", "stdio" },
+            filetypes = { "sql", "mysql" }
         })
 
         -- LSP for Zig (ziglang)
