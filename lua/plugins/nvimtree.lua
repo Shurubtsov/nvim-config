@@ -38,7 +38,7 @@ return {
             },
             diagnostics = {
                 enable = true,
-                show_on_dirs = false,
+                show_on_dirs = true,
                 icons = {
                     hint = "",
                     info = "",
