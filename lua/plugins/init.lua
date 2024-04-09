@@ -10,7 +10,7 @@ return {
     },
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },              -- extension for telescope
+    -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "olexsmir/gopher.nvim",
         dependencies = {
@@ -29,6 +29,18 @@ return {
                 },
             })
         end,
+    },
+    {
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("fzf-lua").setup({ 'telescope' })
+            local map = vim.api.nvim_set_keymap
+            local opts = { noremap = true }
+
+            map('n', '<leader>ff', '<cmd>:FzfLua files<CR>', opts)
+            map('n', '<leader>fg', '<cmd>:FzfLua live_grep<CR>', opts)
+        end
     },
     {
         -- <Tab>: choose next snippets
@@ -85,7 +97,7 @@ return {
             local map = vim.api.nvim_set_keymap
             local opts = { noremap = true }
 
-            map('n', '<C-f>', '<cmd>:HopWord<CR>', opts)
+            -- map('n', '<C-f>', '<cmd>:HopWord<CR>', opts)
             map('n', 'F', '<cmd>:HopLine<CR>', opts)
         end,
     }
