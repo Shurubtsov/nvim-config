@@ -7,19 +7,15 @@ return {
             defaults = {
                 prompt_prefix = '> ',
                 color_devicons = true,
-                -- file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-                -- grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-                -- qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+                file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+                grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
+                qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
+                file_ignore_patterns = { ".git", "go.mod", "go.sum" },
             },
             pickers = {
                 live_grep = {
-                    max_results = 6000,
-                    only_sort_text = true,
-                    additional_args = function(opts)
-                        return { '--smart-case', '-u' } -- -u removes duplicate lines
-                    end,
-                    engine = "ripgrep",
-                },
+                    max_results = 30,
+                }
             },
             extensions = {
                 fzf = {
