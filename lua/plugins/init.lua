@@ -1,53 +1,61 @@
 -- initialize configurations --
 return {
     {
-        "rebelot/kanagawa.nvim",
+        "sainnhe/sonokai",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "kanagawa"
+            vim.cmd.colorscheme "sonokai"
         end
     },
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
-    -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
-    {
-        "olexsmir/gopher.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            local path = os.getenv("HOME") .. "/go/bin/gotests"
-            require("gopher").setup({
-                commands = {
-                    go = "go",
-                    gomodifytags = "gomodifytags",
-                    gotests = path, -- also you can set custom command path
-                    impl = "impl",
-                    iferr = "iferr",
-                },
-            })
-        end,
-    },
+    { "nvim-lua/plenary.nvim" },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "ibhagwan/fzf-lua",
+        -- optional for icon support
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        keys = {
+            { "<C-f>", "<cmd>FzfLua live_grep<cr>", "fzf toggle live grep" },
+        },
         config = function()
-            require("fzf-lua").setup({ 'telescope' })
-            local map = vim.api.nvim_set_keymap
-            local opts = { noremap = true }
-
-            map('n', '<leader>ff', '<cmd>:FzfLua files<CR>', opts)
-            map('n', '<leader>fg', '<cmd>:FzfLua live_grep<CR>', opts)
+            -- calling `setup` is optional for customization
+            require("fzf-lua").setup({})
         end
+    },
+    {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+            "ray-x/guihua.lua",
+            "neovim/nvim-lspconfig",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        keys = {
+            {"<leader>er", "<cmd>GoIfErr<cr>", "go.nvim insert iferr construction"},
+            {"<leader>fi", "<cmd>GoImplemets<cr>", "go.nvim find interface implementations"},
+        },
+        config = function()
+            local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*.go",
+                callback = function()
+                    require('go.format').goimports()
+                end,
+                group = format_sync_grp,
+            })
+            require("go").setup()
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
     {
         -- <Tab>: choose next snippets
         -- <Shift-Tab>: choose prev snippets
         "L3MON4D3/LuaSnip",
         version = "v2.*",
-        dependencies = { "friendly-snippets", "nvim-cmp" },
+        dependencies = { "nvim-cmp" },
         build = "make install_jsregexp",
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
