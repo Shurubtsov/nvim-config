@@ -32,8 +32,8 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         keys = {
-            {"<leader>er", "<cmd>GoIfErr<cr>", "go.nvim insert iferr construction"},
-            {"<leader>fi", "<cmd>GoImplemets<cr>", "go.nvim find interface implementations"},
+            { "<leader>er", "<cmd>GoIfErr<cr>",     "go.nvim insert iferr construction" },
+            { "<leader>ef", "<cmd>GoImplemets<cr>", "go.nvim find interface implementations" },
         },
         config = function()
             local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
