@@ -42,10 +42,14 @@ return {
                 gopls = {
                     analyses = {
                         unusedparams = true,
+                        unusedvariable = true,
                         fieldalignment = true,
                         unusedwrite = true,
+                        shadow = true,
                     },
                     staticcheck = true,
+                    vulncheck = true,
+                    gofumpt = true,
                 },
             },
         }))
