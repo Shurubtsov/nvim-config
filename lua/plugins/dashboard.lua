@@ -1,7 +1,7 @@
 return {
     'nvimdev/dashboard-nvim', -- dashboard start menu
     event = 'VimEnter',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'nvim-telescope/telescope.nvim' },
     config = function()
         require('dashboard').setup({
             theme = 'doom',
