@@ -1,13 +1,12 @@
 return {
 
     "akinsho/bufferline.nvim",
-    version = "v4.*",
     config = function()
         require("bufferline").setup({
             options = {
                 close_command = "bdelete! %d",
                 mode = "buffers",
-                diagnostics = "nvim_lsp",
+                -- diagnostics = "nvim_lsp",
                 numbers = "ordinal",
                 max_name_length = 32,
                 max_prefix_length = 15,
