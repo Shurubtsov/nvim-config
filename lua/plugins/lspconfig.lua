@@ -48,7 +48,6 @@ return {
                         shadow = true,
                     },
                     staticcheck = true,
-                    vulncheck = true,
                     gofumpt = true,
                 },
             },
