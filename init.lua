@@ -1,7 +1,7 @@
 -- main file for nvim config --
 local lazy_opts = require('package.utils').options
 Lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(Lazypath) then
+if not vim.uv.fs_stat(Lazypath) then
     vim.fn.system({
         "git",
         "clone",
