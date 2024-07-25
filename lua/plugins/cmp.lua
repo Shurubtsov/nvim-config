@@ -3,8 +3,8 @@ return {
     event = "InsertEnter",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
-        "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
+        -- "saadparwaiz1/cmp_luasnip",
+        -- "rafamadriz/friendly-snippets",
     },
     config = function()
         -- Add additional capabilities supported by nvim-cmp
@@ -34,7 +34,8 @@ return {
         cmp.setup {
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body)
+                    -- require('luasnip').lsp_expand(args.body)
+                    vim.fn["UltiSnips#Anon"](args.body)
                 end,
             },
             mapping = cmp.mapping.preset.insert({
@@ -66,7 +67,8 @@ return {
             }),
             sources = {
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' },
+                -- { name = 'luasnip' },
+                { name = 'ultisnips' },
             },
         }
     end

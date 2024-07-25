@@ -50,17 +50,20 @@ return {
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    {
-        -- <Tab>: choose next snippets
-        -- <Shift-Tab>: choose prev snippets
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        dependencies = { "nvim-cmp" },
-        build = "make install_jsregexp",
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-    },
+    -- {
+    --     -- <Tab>: choose next snippets
+    --     -- <Shift-Tab>: choose prev snippets
+    --     "L3MON4D3/LuaSnip",
+    --     version = "v2.*",
+    --     dependencies = { "nvim-cmp" },
+    --     build = "make install_jsregexp",
+    --     config = function()
+    --         require("luasnip.loaders.from_vscode").lazy_load()
+    --     end,
+    -- },
+
+    -- snippets
+    { 'Sirver/ultisnips', event = { 'VeryLazy' } },
     {
         "yamatsum/nvim-cursorline", -- cursorline highlight
         config = function()
