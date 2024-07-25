@@ -1,6 +1,6 @@
 return {
-
     "akinsho/bufferline.nvim",
+    dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
         require("bufferline").setup({
             options = {
@@ -36,15 +36,13 @@ return {
         map("n", "tb", "<cmd>BufferLinePickClose<CR>", opts)
         map("n", "tv", "<cmd>BufferLinePick<CR>", opts)
 
-        diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and " " or " "
-            return " " .. icon .. count
-        end
-
-        diagnostics_indicator = function(diagnostics_dict)
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+            -- local icon = level:match("error") and " " or " "
+            -- return " " .. icon .. count
             local s = " "
             for e, n in pairs(diagnostics_dict) do
-                local sym = e == "error" and " " or (e == "warning" and " " or "")
+                local sym = e == "error" and " "
+                    or (e == "warning" and " " or " ")
                 s = s .. n .. sym
             end
             return s
