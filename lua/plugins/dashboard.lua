@@ -50,8 +50,8 @@ return {
                         action =
                         "Telescope find_files"
                     },
-                    { icon = " ", desc = "Search Text",  action = "Telescope live_grep" },
-                    { icon = " ", desc = "Recent Files", action = "Telescope oldfiles" },
+                    { icon = " ", desc = "Search Text",  action = "FzfLua live_grep" },
+                    { icon = " ", desc = "Recent Files", action = "FzfLua oldfiles" },
                     { icon = " ", desc = "Config",       action = "edit ~/.config/nvim/init.lua" }
                 },
                 footer = {
