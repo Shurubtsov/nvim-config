@@ -1,7 +1,7 @@
 return {
     'nvimdev/dashboard-nvim', -- dashboard start menu
     event = 'VimEnter',
-    dependencies = { 'nvim-tree/nvim-web-devicons', 'nvim-telescope/telescope.nvim' },
+    dependencies = {'ibhagwan/fzf-lua'},
     config = function()
         require('dashboard').setup({
             theme = 'doom',
@@ -45,10 +45,8 @@ return {
                         icon_hl = "Title",
                         icon = " ",
                         desc = "Find File",
-                        desc_h1 =
-                        "String",
-                        action =
-                        "Telescope find_files"
+                        desc_h1 = "String",
+                        action = "FzfLua files"
                     },
                     { icon = " ", desc = "Search Text",  action = "FzfLua live_grep" },
                     { icon = " ", desc = "Recent Files", action = "FzfLua oldfiles" },
