@@ -17,11 +17,13 @@ return {
         -- optional for icon support
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
-            { "<leader>fg", "<cmd>FzfLua live_grep<cr>", "fzf toggle live grep" },
-            { "<leader>ff", "<cmd>FzfLua files<cr>", "fzf toggle find files" },
+            { "<leader>fg", "<cmd>FzfLua live_grep<cr>",           "fzf toggle live grep" },
+            { "<leader>ff", "<cmd>FzfLua files<cr>",               "fzf toggle find files" },
             { "<leader>fm", "<cmd>FzfLua lsp_implementations<cr>", "fzf toggle find files" },
         },
         config = function()
+            -- Ensure nvim-web-devicons is loaded
+            require 'nvim-web-devicons'.setup {}
             -- calling `setup` is optional for customization
             require("fzf-lua").setup({})
         end
