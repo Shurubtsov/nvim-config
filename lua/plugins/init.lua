@@ -11,14 +11,14 @@ return {
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
     { "nvim-lua/plenary.nvim" },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
+    -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "ibhagwan/fzf-lua",
         -- optional for icon support
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
             { "<leader>fg", "<cmd>FzfLua live_grep<cr>", "fzf toggle live grep" },
-            { "<leader>ff", "<cmd>FzfLua find_files<cr>", "fzf toggle find files" },
+            { "<leader>ff", "<cmd>FzfLua files<cr>", "fzf toggle find files" },
             { "<leader>fm", "<cmd>FzfLua lsp_implementations<cr>", "fzf toggle find files" },
         },
         config = function()
@@ -63,7 +63,6 @@ return {
     --         require("luasnip.loaders.from_vscode").lazy_load()
     --     end,
     -- },
-
     -- snippets
     { 'Sirver/ultisnips', event = { 'VeryLazy' } },
     {
