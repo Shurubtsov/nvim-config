@@ -8,6 +8,8 @@ return {
             vim.cmd.colorscheme "sonokai"
         end
     },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim"},
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
     { "nvim-lua/plenary.nvim" },
@@ -19,7 +21,7 @@ return {
         keys = {
             { "<leader>fg", "<cmd>FzfLua live_grep<cr>",           "fzf toggle live grep" },
             { "<leader>ff", "<cmd>FzfLua files<cr>",               "fzf toggle find files" },
-            { "<leader>fm", "<cmd>FzfLua lsp_implementations<cr>", "fzf toggle find files" },
+            { "<leader>fr", "<cmd>FzfLua lsp_implementations<cr>", "fzf toggle find files" },
         },
         config = function()
             -- Ensure nvim-web-devicons is loaded
