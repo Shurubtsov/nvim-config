@@ -53,18 +53,10 @@ return {
             },
         }))
 
-        --LSP for Protobuf
-        lspconfig.bufls.setup(config({
-            on_attach = on_attach,
-            cmd = { "bufls", "serve" },
-            filetypes = { "proto" },
-            root_dir = util.root_pattern("buf.work.yaml", ".git")
-        }))
-
         -- LSP for Rust
         lspconfig.rust_analyzer.setup(config({
             on_attach = on_attach,
-            cmd = { "rust-analyzer" },
+        cmd = { "rust-analyzer" },
             filetypes = { "rust", "rs" },
             root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
             settings = {
