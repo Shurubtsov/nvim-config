@@ -8,11 +8,18 @@ return {
             vim.cmd.colorscheme "sonokai"
         end
     },
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim"},
     { "fatih/vim-go" },
     { "ziglang/zig.vim" },
     { "nvim-lua/plenary.nvim" },
+    ----------------------------
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = { ensure_installed = { "lua_ls", "rust_analyzer", "gopls", "clangd", "sqlls", "zls" } },
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
     -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "ibhagwan/fzf-lua",
@@ -23,12 +30,7 @@ return {
             { "<leader>ff", "<cmd>FzfLua files<cr>",               "fzf toggle find files" },
             { "<leader>fr", "<cmd>FzfLua lsp_implementations<cr>", "fzf toggle find files" },
         },
-        config = function()
-            -- Ensure nvim-web-devicons is loaded
-            require 'nvim-web-devicons'.setup {}
-            -- calling `setup` is optional for customization
-            require("fzf-lua").setup({})
-        end
+        opts = {}
     },
     {
         "ray-x/go.nvim",
