@@ -1,11 +1,13 @@
 -- initialize configurations --
 return {
     {
-        "sainnhe/sonokai",
+        -- "sainnhe/sonokai",
+        "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "sonokai"
+            -- vim.cmd.colorscheme "sonokai"
+            vim.cmd.colorscheme "gruvbox"
         end
     },
     { "fatih/vim-go" },
