@@ -7,27 +7,6 @@ return {
         -- "rafamadriz/friendly-snippets",
     },
     config = function()
-        -- Add additional capabilities supported by nvim-cmp
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-        local lspconfig = require('lspconfig')
-
-        local on_attach = require('package.lsp')
-
-        -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-        local servers = {
-            'gopls',
-            'rust_analyzer',
-            'lua_ls',
-            'zls',
-        }
-        for _, lsp in ipairs(servers) do
-            lspconfig[lsp].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-            }
-        end
-
         -- nvim-cmp setup
         local cmp = require('cmp')
 

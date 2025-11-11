@@ -1,18 +1,15 @@
 -- initialize configurations --
 return {
     {
-        -- "sainnhe/sonokai",
         "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            -- vim.cmd.colorscheme "sonokai"
             vim.cmd.colorscheme "gruvbox"
         end
     },
-    { "fatih/vim-go" },
-    { "ziglang/zig.vim" },
-    { "nvim-lua/plenary.nvim" },
+    { "fatih/vim-go", ft = { "go", "gomod", "gowork" } },
+    { "ziglang/zig.vim", ft = { "zig", "zir" } },
     ----------------------------
     {
         "mason-org/mason-lspconfig.nvim",
@@ -25,15 +22,14 @@ return {
             "neovim/nvim-lspconfig",
         },
     },
-    -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- extension for telescope
     {
         "ibhagwan/fzf-lua",
         -- optional for icon support
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
-            { "<leader>fg", "<cmd>FzfLua live_grep<cr>",           "fzf toggle live grep" },
-            { "<leader>ff", "<cmd>FzfLua files<cr>",               "fzf toggle find files" },
-            { "<leader>fr", "<cmd>FzfLua lsp_implementations<cr>", "fzf toggle find files" },
+            { "<leader>fg", "<cmd>FzfLua live_grep<cr>",           "fzf live grep" },
+            { "<leader>ff", "<cmd>FzfLua files<cr>",               "fzf find files" },
+            { "<leader>fr", "<cmd>FzfLua lsp_implementations<cr>", "fzf find LSP implementations" },
         },
         opts = {}
     },
@@ -45,8 +41,8 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         keys = {
-            { "<leader>er", "<cmd>GoIfErr<cr>",     "go.nvim insert iferr construction" },
-            { "<leader>ef", "<cmd>GoImplemets<cr>", "go.nvim find interface implementations" },
+            { "<leader>er", "<cmd>GoIfErr<cr>", "go.nvim insert iferr construction" },
+            { "<leader>ef", "<cmd>GoImpl<cr>", "go.nvim implement interface" },
         },
         config = function()
             local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
@@ -63,21 +59,10 @@ return {
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    -- {
-    --     -- <Tab>: choose next snippets
-    --     -- <Shift-Tab>: choose prev snippets
-    --     "L3MON4D3/LuaSnip",
-    --     version = "v2.*",
-    --     dependencies = { "nvim-cmp" },
-    --     build = "make install_jsregexp",
-    --     config = function()
-    --         require("luasnip.loaders.from_vscode").lazy_load()
-    --     end,
-    -- },
-    -- snippets
-    { 'Sirver/ultisnips', event = { 'VeryLazy' } },
+    { 'Sirver/ultisnips', event = 'InsertEnter' },
     {
-        "yamatsum/nvim-cursorline", -- cursorline highlight
+        "yamatsum/nvim-cursorline",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require('nvim-cursorline').setup {
                 cursorline = {
@@ -108,20 +93,15 @@ return {
     },
     {
         "phaazon/hop.nvim",
-        branch = "v2", -- optional but strongly recommended
+        branch = "v2",
+        keys = {
+            { 'F', '<cmd>HopLine<cr>', desc = "Hop to line" }
+        },
         config = function()
             require 'hop'.setup {
-                -- Hop configuration goes there
                 keys = 'etovxqpdygfblzhckisuran',
                 case_insensitive = false,
             }
-
-            -- Keymaps
-            local map = vim.api.nvim_set_keymap
-            local opts = { noremap = true }
-
-            -- map('n', '<C-f>', '<cmd>:HopWord<CR>', opts)
-            map('n', 'F', '<cmd>:HopLine<CR>', opts)
         end,
     }
 }

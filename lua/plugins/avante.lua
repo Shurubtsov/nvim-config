@@ -3,13 +3,12 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-        -- setting up model HERE <--------------
         provider = "openai",
         mode = "agentic",
         providers = {
             endpoint = "https://api.openai.com/v1",
             model = "gpt-4o-mini",
-            api_key = "OPENAI_API_KEY"
+            api_key = os.getenv("OPENAI_API_KEY") or ""
         }
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -20,13 +19,12 @@ return {
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
-        --- The below dependencies are optional,
-        "echasnovski/mini.pick",     -- for file_selector provider mini.pick
-        "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-        "hrsh7th/nvim-cmp",          -- autocompletion for avante commands and mentions
-        "ibhagwan/fzf-lua",          -- for file_selector provider fzf
-        "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-        "zbirenbaum/copilot.lua",    -- for providers='copilot'
+        "hrsh7th/nvim-cmp",
+        "ibhagwan/fzf-lua",
+        "nvim-tree/nvim-web-devicons",
+        { "echasnovski/mini.pick", optional = true },
+        { "nvim-telescope/telescope.nvim", optional = true },
+        { "zbirenbaum/copilot.lua", optional = true },
         {
             -- support for image pasting
             "HakonHarnes/img-clip.nvim",
