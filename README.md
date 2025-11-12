@@ -5,7 +5,7 @@ Modern, feature-rich Neovim configuration optimized for systems programming with
 ## Features
 
 - **Plugin Manager:** [lazy.nvim](https://github.com/folke/lazy.nvim) with auto-installation and lazy loading
-- **Colorscheme:** [Gruvbox](https://github.com/ellisonleao/gruvbox.nvim) - warm retro groove theme
+- **Dynamic Colorschemes:** 7 pre-installed themes with fuzzy picker and session persistence (Gruvbox, TokyoNight, Catppuccin, Kanagawa, Nightfox, Rose Pine, Dracula)
 - **AI Assistant:** [avante.nvim](https://github.com/yetone/avante.nvim) with OpenAI integration (gpt-4o-mini)
 - **LSP Support:** Comprehensive language server configurations with auto-installation via mason.nvim
 - **Fuzzy Finding:** Fast file/text search with [fzf-lua](https://github.com/ibhagwan/fzf-lua)
@@ -126,6 +126,18 @@ fc-cache -fv
 | [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Autocompletion engine |
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting |
 
+### Colorschemes
+
+| Plugin | Description |
+|--------|-------------|
+| [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim) | Warm retro groove theme (default) |
+| [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) | Modern dark theme with multiple variants |
+| [catppuccin](https://github.com/catppuccin/nvim) | Soothing pastel theme |
+| [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) | Dark theme inspired by famous painting |
+| [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim) | Highly customizable theme family |
+| [rose-pine](https://github.com/rose-pine/neovim) | Natural pine theme |
+| [dracula.nvim](https://github.com/Mofiqul/dracula.nvim) | Classic dracula theme |
+
 ### UI Enhancement
 
 | Plugin | Purpose |
@@ -181,6 +193,7 @@ fc-cache -fv
 | `<leader>ff` | Find files |
 | `<leader>fg` | Live grep (search text) |
 | `<leader>fr` | Find LSP implementations |
+| `<leader>fc` | Colorscheme picker |
 | `F` | Hop to line |
 
 ### Buffer Management
@@ -233,9 +246,10 @@ fc-cache -fv
 ├── lua/
 │   ├── options.lua         # Editor options
 │   ├── keymaps.lua         # Global keybindings
-│   ├── autocommands.lua    # Autocommands
+│   ├── autocommands.lua    # Autocommands (includes colorscheme auto-save)
 │   ├── package/
 │   │   ├── lsp.lua        # LSP on_attach config
+│   │   ├── colorscheme.lua # Colorscheme persistence utility
 │   │   └── utils.lua      # Utility functions
 │   └── plugins/
 │       ├── init.lua       # Plugin definitions
@@ -250,14 +264,40 @@ fc-cache -fv
 
 ### Change Colorscheme
 
-Edit `lua/plugins/init.lua`:
+This configuration includes **7 pre-installed colorschemes** with dynamic switching and session persistence.
+
+**Quick Switch:**
+- Press `<leader>fc` to open the colorscheme picker
+- Use fuzzy search or arrow keys to browse
+- Press Enter to apply
+- Your choice is automatically saved and persists across sessions
+
+**Available Themes:**
+- `gruvbox` - Warm retro groove (default)
+- `tokyonight-night` - Modern dark theme
+- `catppuccin-mocha` - Soothing pastel theme
+- `kanagawa` - Inspired by famous Japanese painting
+- `nightfox` - Highly customizable dark theme
+- `rose-pine` - Natural pine theme
+- `dracula` - Classic dark theme
+
+**Manual Change:**
+```vim
+:colorscheme tokyonight-night
+```
+
+**Add More Colorschemes:**
+
+Edit `lua/plugins/init.lua` and add your preferred theme:
 ```lua
--- Find the gruvbox section and change to your preferred theme
-{
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = true,
-}
+{ "author/colorscheme-name", lazy = false, priority = 1000 },
+```
+
+**Change Default Colorscheme:**
+
+Edit `init.lua` line 28:
+```lua
+colorscheme_util.apply_colorscheme("your-theme-name")
 ```
 
 ### Add New LSP Server
