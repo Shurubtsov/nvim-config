@@ -2,9 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
         -- LSP configuration for autocompletion
-        local lspconfig = require "lspconfig"
-        local util = require "lspconfig/util"
-
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         local function config(_config)
@@ -16,11 +13,11 @@ return {
         local on_attach = require('package.lsp')
 
         -- LSP for Golang
-        lspconfig.gopls.setup(config({
+        vim.lsp.config('gopls', config({
             on_attach = on_attach,
             cmd = { "gopls", "serve" },
             filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-            root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+            root_markers = { "go.work", "go.mod", ".git" },
             settings = {
                 gopls = {
                     analyses = {
@@ -37,11 +34,11 @@ return {
         }))
 
         -- LSP for Rust
-        lspconfig.rust_analyzer.setup(config({
+        vim.lsp.config('rust_analyzer', config({
             on_attach = on_attach,
             cmd = { "rust-analyzer" },
             filetypes = { "rust", "rs" },
-            root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
+            root_markers = { "Cargo.toml", "rust-project.json" },
             settings = {
                 ["rust-analyzer"] = {
                     imports = {
@@ -63,7 +60,7 @@ return {
         }))
 
         -- LSP for Lua
-        lspconfig.lua_ls.setup(config({
+        vim.lsp.config('lua_ls', config({
             on_attach = on_attach,
             on_init = function(client)
                 local uv = vim.uv or vim.loop
@@ -103,11 +100,11 @@ return {
         }))
 
         -- LSP for C, C++ etc.
-        lspconfig.clangd.setup(config({
+        vim.lsp.config('clangd', config({
             on_attach = on_attach,
             cmd = { "clangd" },
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-            root_dir = util.root_pattern(
+            root_markers = {
                 '.clangd',
                 '.clang-tidy',
                 '.clang-format',
@@ -115,22 +112,22 @@ return {
                 'compile_flags.txt',
                 'configure.ac',
                 '.git'
-            )
+            }
         }))
 
         -- LSP for SQL
-        lspconfig.sqlls.setup(config({
+        vim.lsp.config('sqlls', config({
             on_attach = on_attach,
             cmd = { "sql-language-server", "up", "--method", "stdio" },
             filetypes = { "sql", "mysql" }
         }))
 
         -- LSP for Zig (ziglang)
-        lspconfig.zls.setup(config({
+        vim.lsp.config('zls', config({
             on_attach = on_attach,
             cmd = { "zls" },
             filetypes = { "zig", "zir" },
-            root_dir = util.root_pattern("zls.json", ".git")
+            root_markers = { "zls.json", ".git" }
         }))
     end
 }

@@ -51,7 +51,6 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         keys = {
-            { "<leader>er", "<cmd>GoIfErr<cr>", "go.nvim insert iferr construction" },
             { "<leader>ef", "<cmd>GoImpl<cr>", "go.nvim implement interface" },
         },
         config = function()
@@ -69,7 +68,6 @@ return {
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    { 'Sirver/ultisnips', event = 'InsertEnter' },
     {
         "yamatsum/nvim-cursorline",
         event = { "BufReadPost", "BufNewFile" },

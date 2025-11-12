@@ -8,7 +8,7 @@ Modern, feature-rich Neovim configuration optimized for systems programming with
 - **Dynamic Colorschemes:** 7 pre-installed themes with fuzzy picker and session persistence (Gruvbox, TokyoNight, Catppuccin, Kanagawa, Nightfox, Rose Pine, Dracula)
 - **LSP Support:** Comprehensive language server configurations with auto-installation via mason.nvim
 - **Fuzzy Finding:** Fast file/text search with [fzf-lua](https://github.com/ibhagwan/fzf-lua)
-- **Auto-completion:** Context-aware completion with nvim-cmp and UltiSnips
+- **Auto-completion:** Context-aware completion with nvim-cmp
 - **Modern Syntax:** Tree-sitter powered syntax highlighting
 - **Git Integration:** gitsigns, branch info, and lazygit integration
 - **Terminal:** Floating terminal with toggleterm and pre-configured apps
@@ -17,7 +17,7 @@ Modern, feature-rich Neovim configuration optimized for systems programming with
 
 | Language | LSP Server | Features |
 |----------|------------|----------|
-| **Go** | gopls | Auto-formatting (gofumpt), goimports, iferr snippets, staticcheck |
+| **Go** | gopls | Auto-formatting (gofumpt), goimports, staticcheck |
 | **Rust** | rust_analyzer | Proc macros, clippy integration |
 | **Lua** | lua_ls | Neovim-aware configuration |
 | **C/C++** | clangd | Formatting, diagnostics |
@@ -219,7 +219,6 @@ fc-cache -fv
 ### Go-specific
 | Key | Action |
 |-----|--------|
-| `<leader>er` | Insert iferr snippet |
 | `<leader>ef` | Find interface implementations |
 
 ### Window Management
@@ -255,7 +254,6 @@ fc-cache -fv
 │       ├── cmp.lua        # Completion setup
 │       ├── treesitter.lua # Syntax highlighting
 │       └── ...            # Other plugin configs
-└── snippets/               # Custom snippets
 ```
 
 ## Customization
