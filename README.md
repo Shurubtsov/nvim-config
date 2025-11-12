@@ -1,12 +1,11 @@
 # Neovim Configuration
 
-Modern, feature-rich Neovim configuration optimized for systems programming with strong LSP integration and AI assistance.
+Modern, feature-rich Neovim configuration optimized for systems programming with strong LSP integration.
 
 ## Features
 
 - **Plugin Manager:** [lazy.nvim](https://github.com/folke/lazy.nvim) with auto-installation and lazy loading
 - **Dynamic Colorschemes:** 7 pre-installed themes with fuzzy picker and session persistence (Gruvbox, TokyoNight, Catppuccin, Kanagawa, Nightfox, Rose Pine, Dracula)
-- **AI Assistant:** [avante.nvim](https://github.com/yetone/avante.nvim) with OpenAI integration (gpt-4o-mini)
 - **LSP Support:** Comprehensive language server configurations with auto-installation via mason.nvim
 - **Fuzzy Finding:** Fast file/text search with [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - **Auto-completion:** Context-aware completion with nvim-cmp and UltiSnips
@@ -160,7 +159,6 @@ fc-cache -fv
 
 | Plugin | Purpose |
 |--------|---------|
-| [avante.nvim](https://github.com/yetone/avante.nvim) | AI coding assistant |
 | [go.nvim](https://github.com/ray-x/go.nvim) | Enhanced Go development |
 | [vim-go](https://github.com/fatih/vim-go) | Additional Go tooling |
 | [zig.vim](https://github.com/ziglang/zig.vim) | Zig language support |
