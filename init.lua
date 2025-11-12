@@ -17,3 +17,14 @@ require('options')
 require('keymaps')
 require('autocommands')
 require("lazy").setup('plugins', lazy_opts)
+
+-- Load saved colorscheme or use default
+local colorscheme_util = require('package.colorscheme')
+local saved_colorscheme = colorscheme_util.load_colorscheme()
+if saved_colorscheme and saved_colorscheme ~= "" then
+    colorscheme_util.apply_colorscheme(saved_colorscheme)
+else
+    -- Default to gruvbox on first run
+    colorscheme_util.apply_colorscheme("gruvbox")
+    colorscheme_util.save_colorscheme("gruvbox")
+end

@@ -1,13 +1,22 @@
 -- initialize configurations --
 return {
+    -- Colorschemes - multiple options for dynamic switching
     {
         "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "gruvbox"
+            require("gruvbox").setup({
+                contrast = "hard", -- can be "hard", "soft" or empty string
+            })
         end
     },
+    { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+    { "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
+    { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
+    { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
+    { "rose-pine/neovim", name = "rose-pine", lazy = false, priority = 1000 },
+    { "Mofiqul/dracula.nvim", lazy = false, priority = 1000 },
     { "fatih/vim-go", ft = { "go", "gomod", "gowork" } },
     { "ziglang/zig.vim", ft = { "zig", "zir" } },
     ----------------------------
@@ -30,6 +39,7 @@ return {
             { "<leader>fg", "<cmd>FzfLua live_grep<cr>",           "fzf live grep" },
             { "<leader>ff", "<cmd>FzfLua files<cr>",               "fzf find files" },
             { "<leader>fr", "<cmd>FzfLua lsp_implementations<cr>", "fzf find LSP implementations" },
+            { "<leader>fc", "<cmd>FzfLua colorschemes<cr>",        "fzf colorscheme picker" },
         },
         opts = {}
     },
