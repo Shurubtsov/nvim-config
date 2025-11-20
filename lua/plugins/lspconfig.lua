@@ -129,5 +129,48 @@ return {
             filetypes = { "zig", "zir" },
             root_markers = { "zls.json", ".git" }
         }))
+
+        -- Enable LSP servers for specific filetypes
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'go', 'gomod', 'gowork', 'gotmpl' },
+            callback = function(args)
+                vim.lsp.enable('gopls')
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'rust' },
+            callback = function(args)
+                vim.lsp.enable('rust_analyzer')
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'lua' },
+            callback = function(args)
+                vim.lsp.enable('lua_ls')
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+            callback = function(args)
+                vim.lsp.enable('clangd')
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'sql', 'mysql' },
+            callback = function(args)
+                vim.lsp.enable('sqlls')
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'zig', 'zir' },
+            callback = function(args)
+                vim.lsp.enable('zls')
+            end,
+        })
     end
 }
